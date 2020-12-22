@@ -8,7 +8,6 @@ const Category = ({ categories, onCategoryChange = () => {} }) => {
   const availableCategories = [...categories, all]
   const handleChange = (categoryId) => {
     onCategoryChange(categoryId)
-    console.log('when the category button is clicked')
   }
   return (
     <div>
@@ -17,7 +16,7 @@ const Category = ({ categories, onCategoryChange = () => {} }) => {
           key={index}
           value={category}
           label={category.name}
-          onChange={handleChange}
+          onChange={handleChange(category.id)}
         />
       ))}
     </div>

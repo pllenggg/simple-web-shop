@@ -9,7 +9,6 @@ const Comp = ({
   borderColor,
   onChange = () => {}
 }) => {
-  console.log('What is the value in button: ', value)
   return (
     <Button color={color} backgroundColor={backgroundColor} borderColor={borderColor} onClick={() => { onChange(value) }}>
       <p> {label} </p>

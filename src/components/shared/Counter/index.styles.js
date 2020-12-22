@@ -15,6 +15,14 @@ export const QuantityInput = styled.input`
 
 `
 
+export const Quantity = styled.div`
+  width: 20px;
+  height: auto;
+  background-color: white;
+  border-radius: 10px;
+  border: 0.5px solid green;
+`
+
 export const Button = styled.button`
   cursor: pointer;
   background: white;
