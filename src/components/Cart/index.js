@@ -2,7 +2,7 @@ import React from 'react'
 import List from '../List'
 import { connect } from 'react-redux'
 import { increaseQuantity, decreaseQuantity, removedFromCart } from '../../store/carts'
-import { CartContainer, CartListOuter, PageTitle, CartEmptyText } from './index.styles'
+import { CartContainer, CartListOuter, PageTitle, CartEmptyText, Detail } from './index.styles'
 import { formatCurrency } from '../utils'
 
 const Cart = (props) => {
@@ -40,7 +40,6 @@ const Cart = (props) => {
     </CartContainer>
   )
 }
-// products: state.entities.products
 
 const CartList = ({
   items,
@@ -79,6 +78,9 @@ const CartList = ({
 
   return (
     <CartListOuter>
+      <Detail>totalCarts: {calculateTotalCartPrice()}</Detail>
+      <Detail>Delivery date: {calculateDeliveryDate()}</Detail>
+      <Detail>Estimated arrival date: {calculateArrivalDate(items)}</Detail>
       <List
         items={items}
         cartPage
@@ -86,9 +88,8 @@ const CartList = ({
         onDecrement={onDecrement}
         onRemove={onRemove}
       />
-      <p>totalCarts: {calculateTotalCartPrice()}</p>
-      <p>Delivery date: {calculateDeliveryDate()}</p>
-      <p>Estimated arrival date: {calculateArrivalDate(items)}</p>
+
+      <Detail>** Note: Products are shipped every Tuesday :D **</Detail>
 
     </CartListOuter>
   )

@@ -20,3 +20,9 @@ export const PageTitle = styled.h1`
     align-items: center;
     size: 1em;
 `
+
+export const Detail = styled.p`
+color: #375953;
+font-style: italic;
+
+`
