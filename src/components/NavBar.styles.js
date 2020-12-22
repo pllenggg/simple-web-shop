@@ -20,3 +20,11 @@ export const LinkOuter = styled(Link)`
         color: #056b56;
     };
 `
+
+export const NavBarInner = styled.div`
+    display: flex;
+`
+
+export const Title = styled.h3`
+    color: white;
+`

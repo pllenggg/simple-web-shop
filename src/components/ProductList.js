@@ -45,10 +45,11 @@ const ProductList = ({ loadProducts, loadCategories, addedToCart, data = [], car
   return (
     <ProductListOuter>
       <PageTitle> Our Products </PageTitle>
-      {data.categories.length && <Category
-        categories={data.categories}
-        onCategoryChange={handleCategoryChange}
-                                 />}
+      {data && data.categories.length &&
+        <Category
+          categories={data.categories}
+          onCategoryChange={handleCategoryChange}
+        />}
       <List
         items={filteredProducts}
         onAddToCart={handleAddToCart}

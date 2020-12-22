@@ -42,7 +42,7 @@
 // export default Counter
 
 // build clicker without the text fields input
-import React, { useState } from 'react'
+import React from 'react'
 import Button from '../Button'
 import { Quantity, CounterOuter } from './index.styles'
 

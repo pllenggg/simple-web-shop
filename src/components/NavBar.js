@@ -1,14 +1,13 @@
 import React from 'react'
-import { Outer, LinkOuter } from './NavBar.styles'
-import { Button } from './shared'
-import cartIcon from '../public/images/add-to-cart.png'
+import { Outer, LinkOuter, NavBarInner, Title } from './NavBar.styles'
+
 const NavBar = () => {
   return (
     <Outer>
-      <div styles={{ display: 'flex', paddingLeft: '10px' }}>
-        <LinkOuter to='/'> Products </LinkOuter>
-        <LinkOuter to='/cart'> My Cart</LinkOuter>
-      </div>
+      <NavBarInner>
+        <LinkOuter to='/'> <Title>Products</Title> </LinkOuter>
+        <LinkOuter to='/cart'> <Title>Cart</Title></LinkOuter>
+      </NavBarInner>
 
     </Outer>
   )

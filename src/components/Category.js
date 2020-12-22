@@ -6,17 +6,17 @@ const Category = ({ categories, onCategoryChange = () => {} }) => {
     name: 'All'
   }
   const availableCategories = [...categories, all]
-  const handleChange = (categoryId) => {
-    onCategoryChange(categoryId)
-  }
+  // const handleChange = (categoryId) => {
+  //   onCategoryChange(categoryId)
+  // }
   return (
     <div>
       {availableCategories.map((category, index) => (
         <Button
           key={index}
-          value={category}
           label={category.name}
-          onChange={handleChange(category.id)}
+          value={category.id}
+          onChange={onCategoryChange}
         />
       ))}
     </div>
