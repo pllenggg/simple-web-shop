@@ -16,6 +16,7 @@ const Category = ({ categories, onCategoryChange = () => {} }) => {
         <Button
           key={index}
           value={category}
+          label={category.name}
           onChange={handleChange}
         />
       ))}

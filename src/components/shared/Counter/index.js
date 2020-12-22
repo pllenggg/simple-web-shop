@@ -1,32 +1,42 @@
-import React, { useState } from 'react'
-import {
-  QuantityInput
-} from './index.styles'
-import Button from '../Button'
+// import React, { useState } from 'react'
+// import {
+//   QuantityInput
+// } from './index.styles'
+// import Button from '../Button'
 
-const Counter = ({ value = 0 }) => {
-  const [quantity, setQuantity] = useState(value)
+// const Counter = ({ value = 0, maxQty, minQty = 0, onError = () => {} }) => {
+//   const [quantity, setQuantity] = useState(0)
+//   const handleChange = (e) => {
+//     const value = e.target.value
+//     // definitely cannot type -1
+//     if (value === 0) return
+//     if (value > maxQty) {
+//       onError(`maximum is ${maxQty}`)
+//     }
 
-  const handleChange = (e) => {
-    const value = e.target.value
-    setQuantity(value)
-  }
+//   }
+//   return (
+//     <div>
+//       <Button
+//         value='-'
+//         onChange={() => handleDecrement(-1)}
+//         color='white'
+//         backgroundColor='#00D2B2'
+//       />
 
-  const handleClick = (value) => {
-    setQuantity(quantity + value)
-  }
+//       <QuantityInput
+//         type='number'
+//         value={quantity}
+//         onChange={handleChange}
+//       />
+//       <Button
+//         value='+'
+//         onChange={() => handleIncrement(+1)}
+//         color='white'
+//         backgroundColor='#00D2B2'
+//       />
+//     </div>
+//   )
+// }
 
-  return (
-    <div>
-      <Button value='-' onClick={() => handleClick(-1)} />
-      <QuantityInput
-        type='number'
-        value={quantity}
-        onChange={handleChange}
-      />
-      <Button value='+' onClick={() => handleClick(1)} />
-    </div>
-  )
-}
-
-export default Counter
+// export default Counter

@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react'
-// import { Row } from './shared'
 import Category from './Category'
+import List from './List'
+import { ProductListOuter } from './ProductList.styles'
 import { fetchData } from './utils'
 // this product component fetch data
 const PRODUCT_ENDPOINT = '/uploads/1/1/8/2/118296037/products.json'
 const CATEGORIES_ENDPOINT = '/uploads/1/1/8/2/118296037/categories.json'
-const Product = () => {
+const ProductList = ({ onAddToCart = () => {} }) => {
 // data
   const [data, setData] = useState({
     products: [],
     categories: []
   })
-  //   const [products, setProducts] = useState([])
-  //   const [categories, setCategories] = useState([])
   const [filteredProducts, setFilteredProducts] = useState(data.products)
   // this useEffect fetch the categories and
   useEffect(() => {
@@ -42,21 +41,17 @@ const Product = () => {
   }
 
   return (
-    <div>
-
+    <ProductListOuter>
       <Category
         categories={data.categories}
         onCategoryChange={handleCategoryChange}
       />
-      <div>
-        {
-            filteredProducts.map(product => (
-              <p key={product.id}>{product.name}</p>
-            ))
-        }
-      </div>
-    </div>
+      <List
+        items={filteredProducts}
+        onAddToCart={onAddToCart}
+      />
+    </ProductListOuter>
   )
 }
 
-export default Product
+export default ProductList

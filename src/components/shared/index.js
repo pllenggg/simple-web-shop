@@ -1,7 +1,9 @@
-import Counter from './Counter'
 import Button from './Button'
+import Card from './Card'
+import Counter from './Counter'
 
 export {
-  Counter,
-  Button
+  Button,
+  Card,
+  Counter
 }
