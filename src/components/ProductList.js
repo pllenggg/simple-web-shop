@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import Category from './Category'
 import List from './List'
-import { ProductListOuter } from './ProductList.styles'
+import { ProductListOuter, PageTitle } from './ProductList.styles'
 import { connect } from 'react-redux'
 import { loadProducts } from '../store/products'
 import { loadCategories } from '../store/categories'
 import { addedToCart } from '../store/carts'
 
-const ProductList = ({ loadProducts, loadCategories, addedToCart, data = [] }) => {
+const ProductList = ({ loadProducts, loadCategories, addedToCart, data = [], carts }) => {
   // data
   const [filteredProducts, setFilteredProducts] = useState(data.products)
-
+  // const [inCart, setInCart] = useState(false)
   useEffect(() => {
     if (!data.products.length) {
       const fetchProducts = () => {
@@ -25,7 +25,12 @@ const ProductList = ({ loadProducts, loadCategories, addedToCart, data = [] }) =
   }, [data.products])
 
   const handleAddToCart = (value) => {
-    console.log('Item is added to cart!: ', value)
+    // find the product in cart
+    const productIndex = carts.findIndex(item => item.id === value.id)
+    if (productIndex !== -1) {
+      const maxQuantity = value.maxQty === '0' ? value.stock : value.maxQty
+      if (carts[productIndex].quantity === parseInt(maxQuantity)) return
+    }
     addedToCart(value)
   }
   // category use only for filter whether the product is in what kind of category
@@ -39,6 +44,7 @@ const ProductList = ({ loadProducts, loadCategories, addedToCart, data = [] }) =
 
   return (
     <ProductListOuter>
+      <PageTitle> Our Products </PageTitle>
       {data.categories.length && <Category
         categories={data.categories}
         onCategoryChange={handleCategoryChange}
@@ -56,7 +62,8 @@ const mapStateToProps = state => ({
   data: {
     products: state.entities.products,
     categories: state.entities.categories
-  }
+  },
+  carts: state.entities.carts
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -14,7 +14,7 @@ export const ButtonContainer = styled.button`
   text-transform: capitalize;
   font-size: 1.4rem;
   background: transparent;
-  border-radius: 10px;
-  padding: 10px;
+  border-radius: 5px;
+  padding: 5px;
   margin: 0 10px;
 `

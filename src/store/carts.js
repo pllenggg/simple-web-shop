@@ -13,7 +13,7 @@ const slice = createSlice({
         const newItem = {
           ...rest,
           minQty,
-          quantity: minQty
+          quantity: (minQty === '0') ? 1 : minQty
         }
         carts.push(newItem)
       }
@@ -39,9 +39,7 @@ const slice = createSlice({
     decreaseQuantity: (carts, action) => {
       const inCartItemIndex = carts.findIndex(item => item.id === action.payload.id)
       const itemQuantity = parseInt(carts[inCartItemIndex].quantity)
-      console.log('itemquantity: ', itemQuantity)
       const minQuantity = parseInt(carts[inCartItemIndex].minQty)
-      console.log('minQuantity: ', minQuantity)
 
       if (itemQuantity > minQuantity) {
         carts[inCartItemIndex].quantity--

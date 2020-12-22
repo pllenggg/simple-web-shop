@@ -44,11 +44,11 @@
 // build clicker without the text fields input
 import React, { useState } from 'react'
 import Button from '../Button'
-import { Quantity } from './index.styles'
+import { Quantity, CounterOuter } from './index.styles'
 
 const Counter = ({ displayValue = 0, onIncrement, onDecrement }) => {
   return (
-    <div styles={{ display: 'flex' }}>
+    <CounterOuter>
       <Button
         label='-'
         onChange={onDecrement}
@@ -66,7 +66,7 @@ const Counter = ({ displayValue = 0, onIncrement, onDecrement }) => {
         color='white'
         backgroundColor='#00D2B2'
       />
-    </div>
+    </CounterOuter>
   )
 }
 

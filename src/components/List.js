@@ -1,7 +1,7 @@
 import React from 'react'
 import { limitString } from './constants'
 import { Card, Button, Counter } from './shared'
-import { PriceTag, TitleOuter } from './List.styles'
+import { ListOuter, QuantityOuter, PriceTag, TitleOuter, ProductDetails, Detail, Info } from './List.styles'
 import { formatCurrency } from './utils'
 
 const List = ({
@@ -24,11 +24,10 @@ const List = ({
     return formatCurrency(totalPrice)
   }
   return (
-    <div>
+    <ListOuter>
       {
             items.map((item, index) => {
-              console.log('itemin list: ', item)
-              const { name, price, stock, minQty, maxQty, quantity } = item
+              const { name, price, stock, minQty, maxQty, quantity, shippingDay } = item
               const getLimitString = (key, value) => {
                 if (parseInt(value) === 0) return
                 const unit = value === 1 ? 'item' : 'items'
@@ -42,11 +41,27 @@ const List = ({
                       <h2> {name} </h2>
                       <PriceTag> {formatCurrency(price)} </PriceTag>
                     </TitleOuter>
-                    <p> {stock} available</p>
-                    <p>{getLimitString('minQty', minQty)}</p>
-                    <p>{getLimitString('maxQty', maxQty)}</p>
+                    <ProductDetails>
+                      <Detail> {stock} items available</Detail>
+                      <Detail>{getLimitString('minQty', minQty)}</Detail>
+                      <Detail>{getLimitString('maxQty', maxQty)}</Detail>
+                      <Info>**This product will take {shippingDay} days to ship.</Info>
+                    </ProductDetails>
                   </div>
                   <div>
+
+                    {
+                    cartPage &&
+                      <QuantityOuter>
+                        <Detail> quantity: {quantity} x {formatCurrency(price)}</Detail>
+                        <Detail> total: {getProductTotalPrice(price, quantity)}</Detail>
+                        <Counter
+                          displayValue={parseInt(quantity)}
+                          onIncrement={() => onIncrement(item)}
+                          onDecrement={() => onDecrement(item)}
+                        />
+                      </QuantityOuter>
+                    }
                     {cartPage
                       ? <Button
                           label='Remove'
@@ -57,33 +72,20 @@ const List = ({
                           onChange={() => onRemove(item)}
                         />
                       : <Button
-                          label='Add to Cart'
+                          label='Add to cart'
                           value={item.id}
                           color='#00D2B2'
                           backgroundColor='white'
                           borderColor='#00D2B2'
                           onChange={handleAddToCart}
                         />}
-                    {
-                    cartPage &&
-                      <div>
-                        <div>
-                          total: {getProductTotalPrice(price, quantity)}
-                        </div>
-                        <Counter
-                          displayValue={parseInt(quantity)}
-                          onIncrement={() => onIncrement(item)}
-                          onDecrement={() => onDecrement(item)}
-                        />
-                      </div>
-                    }
                   </div>
                 </Card>
 
               )
             })
         }
-    </div>
+    </ListOuter>
   )
 }
 

@@ -23,9 +23,8 @@ export const Quantity = styled.div`
   border: 0.5px solid green;
 `
 
-export const Button = styled.button`
-  cursor: pointer;
-  background: white;
-  border: solid black 1px;
-  border-radius: 5px;
+export const CounterOuter = styled.div`
+  display: flex;
+  height: 30px;
+  padding: 10px;
 `
