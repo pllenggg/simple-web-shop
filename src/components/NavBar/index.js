@@ -1,5 +1,5 @@
 import React from 'react'
-import { Outer, LinkOuter, NavBarInner, Title } from './NavBar.styles'
+import { Outer, LinkOuter, NavBarInner, Title } from './index.styles'
 
 const NavBar = () => {
   return (

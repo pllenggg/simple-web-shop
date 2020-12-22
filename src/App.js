@@ -2,9 +2,7 @@
 import { Switch, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import configureStore from './store/configureStore'
-import NavBar from './components/NavBar'
-import ProductList from './components/ProductList'
-import Cart from './components/Cart'
+import { NavBar, ProductList, Cart } from './components/'
 
 function App () {
   const store = configureStore()

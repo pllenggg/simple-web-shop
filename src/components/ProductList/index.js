@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import Category from './Category'
-import List from './List'
-import { ProductListOuter, PageTitle } from './ProductList.styles'
+import Category from '../Category'
+import List from '../List'
+import { ProductListOuter, PageTitle } from './index.styles'
 import { connect } from 'react-redux'
-import { loadProducts } from '../store/products'
-import { loadCategories } from '../store/categories'
-import { addedToCart } from '../store/carts'
+import { loadProducts } from '../../store/products'
+import { loadCategories } from '../../store/categories'
+import { addedToCart } from '../../store/carts'
 
 const ProductList = ({ loadProducts, loadCategories, addedToCart, data = [], carts }) => {
-  // data
   const [filteredProducts, setFilteredProducts] = useState(data.products)
-  // const [inCart, setInCart] = useState(false)
   useEffect(() => {
     if (!data.products.length) {
       const fetchProducts = () => {
@@ -33,7 +31,7 @@ const ProductList = ({ loadProducts, loadCategories, addedToCart, data = [], car
     }
     addedToCart(value)
   }
-  // category use only for filter whether the product is in what kind of category
+
   const handleCategoryChange = (categoryId) => {
     const { products } = data
     const categoryProducts = categoryId

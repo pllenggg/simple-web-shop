@@ -1,9 +1,9 @@
 import React from 'react'
-import List from './List'
+import List from '../List'
 import { connect } from 'react-redux'
-import { increaseQuantity, decreaseQuantity, removedFromCart } from '../store/carts'
-import { CartContainer, PageTitle } from './Cart.styles'
-import { formatCurrency } from './utils'
+import { increaseQuantity, decreaseQuantity, removedFromCart } from '../../store/carts'
+import { CartContainer, CartListOuter, PageTitle, CartEmptyText } from './index.styles'
+import { formatCurrency } from '../utils'
 
 const Cart = (props) => {
   const {
@@ -27,8 +27,9 @@ const Cart = (props) => {
 
   return (
     <CartContainer>
+      <PageTitle> Your Cart </PageTitle>
       {cartItems.length === 0
-        ? <div> Your cart is empty </div>
+        ? <CartEmptyText> Your cart is empty </CartEmptyText>
         : <CartList
             items={cartItems}
             onIncrement={handleIncrement}
@@ -62,9 +63,7 @@ const CartList = ({
   }
 
   const calculateArrivalDate = (items) => {
-    console.log('items: ', items)
     const longestShippingDayItem = [...items].sort((a, b) => b.shippingDay - a.shippingDay)
-    console.log('longestShippingDayItem', longestShippingDayItem)
     let startDate = calculateDeliveryDate()
     startDate = new Date(startDate.replace(/-/g, '/'))
     let endDate = ''
@@ -75,13 +74,11 @@ const CartList = ({
         count++
       }
     }
-    console.log('endDate: ', endDate)
     return endDate.toDateString()
   }
 
   return (
-    <div>
-      <PageTitle> Your Cart </PageTitle>
+    <CartListOuter>
       <List
         items={items}
         cartPage
@@ -93,7 +90,7 @@ const CartList = ({
       <p>Delivery date: {calculateDeliveryDate()}</p>
       <p>Estimated arrival date: {calculateArrivalDate(items)}</p>
 
-    </div>
+    </CartListOuter>
   )
 }
 
