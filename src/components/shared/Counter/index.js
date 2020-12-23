@@ -1,6 +1,5 @@
 
 import React from 'react'
-import Button from '../Button'
 import { Quantity, CounterOuter, Clicker } from './index.styles'
 
 const Counter = ({ displayValue = 0, onIncrement, onDecrement }) => {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { limitString } from '../constants'
-import { Card, Button, Counter } from '../Shared'
+import { Card, Button, Counter } from '../shared'
 import { ListOuter, QuantityOuter, PriceTag, TitleOuter, ProductDetails, Detail, Info } from './index.styles'
 import { formatCurrency } from '../utils'
 

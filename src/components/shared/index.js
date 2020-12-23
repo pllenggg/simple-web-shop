@@ -3,7 +3,7 @@ import Card from './Card'
 import Counter from './Counter'
 
 export {
-  Button,
-  Card,
-  Counter
+    Button,
+    Card,
+    Counter
 }
